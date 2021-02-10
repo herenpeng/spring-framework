@@ -162,6 +162,7 @@ public class ClassPathXmlApplicationContext extends AbstractXmlApplicationContex
 		setConfigLocations(configLocations);
 		// 是否自动刷新，这里refresh的值为true，自动刷新上下文内容
 		if (refresh) {
+			// 刷新上下文件
 			refresh();
 		}
 	}
