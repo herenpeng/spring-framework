@@ -10,6 +10,10 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class SpringReader {
 
+	public void test() {
+
+	}
+
 	public static void main(String[] args) {
 		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
 		// ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext-${name}.xml");
