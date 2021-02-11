@@ -643,6 +643,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 				onRefresh();
 
 				// Check for listener beans and register them.
+				// 检查侦听器bean并注册它们
 				registerListeners();
 
 				// Instantiate all remaining (non-lazy-init) singletons.
