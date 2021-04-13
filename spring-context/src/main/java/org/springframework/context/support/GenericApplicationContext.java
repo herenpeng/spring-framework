@@ -110,6 +110,7 @@ public class GenericApplicationContext extends AbstractApplicationContext implem
 	 * @see #refresh
 	 */
 	public GenericApplicationContext() {
+		// 该类的构造函数被执行，因为子类初始化对象的时候，会先初始化父类，执行父类的构造函数
 		this.beanFactory = new DefaultListableBeanFactory();
 	}
 
@@ -273,6 +274,7 @@ public class GenericApplicationContext extends AbstractApplicationContext implem
 			throw new IllegalStateException(
 					"GenericApplicationContext does not support multiple refresh attempts: just call 'refresh' once");
 		}
+		// 给 BeanFactory 设置这个序列化ID
 		this.beanFactory.setSerializationId(getId());
 	}
 
