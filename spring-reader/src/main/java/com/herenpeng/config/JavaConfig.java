@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 public class JavaConfig {
 
 
-	@Bean("user")
+	@Bean
 	public User user() {
 		return new User();
 	}

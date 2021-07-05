@@ -268,6 +268,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 
 	/**
 	 * Application startup metrics.
+	 * ApplicationStartup接口的默认实现类
 	 **/
 	private ApplicationStartup applicationStartup = ApplicationStartup.DEFAULT;
 
@@ -622,6 +623,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 				// 允许在上下文子类中对bean工厂进行后处理
 				postProcessBeanFactory(beanFactory);
 
+				// 返回一个DefaultStartupStep启动步骤对象，bean后处理
 				StartupStep beanPostProcess = this.applicationStartup.start("spring.context.beans.post-process");
 				// Invoke factory processors registered as beans in the context.
 				// 调用在上下文中注册为Bean的工厂处理器
@@ -630,6 +632,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 				// Register bean processors that intercept bean creation.
 				// 注册拦截Bean创建的Bean处理器。
 				registerBeanPostProcessors(beanFactory);
+				//
 				beanPostProcess.end();
 
 				// Initialize message source for this context.
@@ -1219,6 +1222,10 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	 * <p>The default implementation checks the {@link #isActive() 'active'} status
 	 * of this context overall. May be overridden for more specific checks, or for a
 	 * no-op if {@link #getBeanFactory()} itself throws an exception in such a case.
+	 * 断言此上下文的 BeanFactory 当前处于活动状态，如果不是，则抛出 {@link IllegalStateException}。 <p>
+	 * 由依赖于活动上下文的所有 {@link BeanFactory} 委托方法调用，即特别是所有 bean 访问器方法。 <p>
+	 * 默认实现会检查整个上下文的 {@link isActive() 'active'} 状态。对于更具体的检查，或者如果 {@link getBeanFactory()}
+	 * 本身在这种情况下抛出异常，则可能会被覆盖。
 	 */
 	protected void assertBeanFactoryActive() {
 		if (!this.active.get()) {
@@ -1243,6 +1250,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 
 	@Override
 	public <T> T getBean(String name, Class<T> requiredType) throws BeansException {
+		// 断言上下文内容是否处于激活状态，是激活状态继续执行，否则抛出异常
 		assertBeanFactoryActive();
 		return getBeanFactory().getBean(name, requiredType);
 	}

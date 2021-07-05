@@ -30,6 +30,7 @@ public interface ApplicationStartup {
 	/**
 	 * Default "no op" {@code ApplicationStartup} implementation.
 	 * <p>This variant is designed for minimal overhead and does not record data.
+	 * ApplicationStartup接口的默认实现类
 	 */
 	ApplicationStartup DEFAULT = new DefaultApplicationStartup();
 
@@ -38,6 +39,7 @@ public interface ApplicationStartup {
 	 * <p>A step name describes the current action or phase. This technical
 	 * name should be "." namespaced and can be reused to describe other instances of
 	 * the same step during application startup.
+	 *
 	 * @param name the step name
 	 */
 	StartupStep start(String name);

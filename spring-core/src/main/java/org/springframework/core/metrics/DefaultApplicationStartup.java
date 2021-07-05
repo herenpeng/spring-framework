@@ -37,6 +37,7 @@ class DefaultApplicationStartup implements ApplicationStartup {
 
 	static class DefaultStartupStep implements StartupStep {
 
+		// end() 方法之后将该值修改为true [recorded:记录下来]
 		boolean recorded = false;
 
 		private final DefaultTags TAGS = new DefaultTags();
