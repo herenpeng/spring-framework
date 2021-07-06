@@ -163,6 +163,7 @@ public abstract class AbstractRefreshableApplicationContext extends AbstractAppl
 
 	@Override
 	public final ConfigurableListableBeanFactory getBeanFactory() {
+		// 虽然我感觉这段代码有点脱裤子放屁的感觉，为什么要重新赋值一个变量？
 		DefaultListableBeanFactory beanFactory = this.beanFactory;
 		if (beanFactory == null) {
 			throw new IllegalStateException("BeanFactory not initialized or already closed - " +
